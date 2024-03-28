@@ -7,7 +7,10 @@ const Chatlist = ({ users, currentUser }) => {
   // we need router in chatitem, but we declare here, because every time chat item render, it declare the router
   const router = useRouter();
   return (
-    <View className="flex-1 ">
+    <View
+      style={{ flex: 1 }}
+      //className="flex-1 "
+    >
       <FlatList
         data={users}
         contentContainerStyle={{ flex: 1, paddingVertical: 25 }}

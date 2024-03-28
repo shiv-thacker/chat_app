@@ -1,11 +1,12 @@
 import { View, Text, Alert } from "react-native";
 import React, { useEffect } from "react";
 import { Slot, useRouter, useSegments } from "expo-router";
-import "../global.css";
+// import "../global.css";
 import { AuthContext, AuthContextProvider } from "../Context/authContext";
 import { useAuth } from "../Context/authContext";
 import { useRoute } from "@react-navigation/native";
 import { MenuProvider } from "react-native-popup-menu";
+import "react-native-gesture-handler";
 
 const MainLayout = () => {
   const { isAuthenticated } = useAuth();

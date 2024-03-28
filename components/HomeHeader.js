@@ -29,11 +29,36 @@ const HomeHeader = () => {
   };
   return (
     <View
-      style={{ paddingTop: ios ? top : top + 10 }}
-      className="flex-row justify-between px-5 bg-indigo-400 pb-6 rounded-b-3xl shadow"
+      style={{
+        paddingTop: ios ? top : top + 10,
+
+        flexDirection: "row", // flex-row
+        justifyContent: "space-between", // justify-between
+        paddingHorizontal: wp(7), // px-5
+        backgroundColor: "#7C3AED", // bg-indigo-400
+        paddingBottom: hp(4), // pb-6
+        borderBottomLeftRadius: wp(13), // rounded-b-3xl
+        borderBottomRightRadius: wp(13), // rounded-b-3xl
+        shadowColor: "#000", // shadow
+        shadowOffset: {
+          width: 0,
+          height: 1,
+        },
+        shadowOpacity: 0.2,
+        shadowRadius: 1.41,
+        elevation: 2,
+      }}
+      // className="flex-row justify-between px-5 bg-indigo-400 pb-6 rounded-b-3xl shadow"
     >
       <View>
-        <Text style={{ fontSize: hp(3) }} className="font-semibold text-white">
+        <Text
+          style={{
+            fontSize: hp(3),
+            fontWeight: "600", // font-semibold
+            color: "white", // text-white
+          }}
+          //  className="font-semibold text-white"
+        >
           Chats
         </Text>
       </View>
@@ -62,7 +87,7 @@ const HomeHeader = () => {
                 backgroundColor: "white",
                 shadowOpacity: 0.2,
                 shadowOffset: { width: 0, height: 0 },
-                width: wp(40),
+                width: wp(45),
               },
             }}
           >
@@ -90,5 +115,14 @@ const HomeHeader = () => {
 export default HomeHeader;
 
 const Divider = () => {
-  return <View className="p-[1px] w-full bg-neutral-200" />;
+  return (
+    <View
+      style={{
+        padding: 1, // p-[1px]
+        width: "100%", // w-full
+        backgroundColor: "#E5E7EB", // bg-neutral-200
+      }}
+      //  className="p-[1px] w-full bg-neutral-200"
+    />
+  );
 };

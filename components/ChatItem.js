@@ -73,24 +73,43 @@ const ChatItem = ({ item, router, noBorder, currentUser }) => {
       />
 
       {/* name and last message */}
-      <View className="flex-1 gap-1">
-        <View className="flex-row justify-between">
+      <View
+        style={{
+          flex: 1,
+        }}
+        //className="flex-1 gap-1"
+      >
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+          //className="flex-row justify-between"
+        >
           <Text
-            style={{ fontSize: hp(1.8) }}
-            className="font-semibold text-neutral-800"
+            style={{ fontSize: hp(1.8), fontWeight: "600", color: "#4B5563" }}
+            // className="font-semibold text-neutral-800"
           >
             {item?.username}
           </Text>
           <Text
-            style={{ fontSize: hp(1.6) }}
-            className="font-medium text-neutral-500"
+            style={{
+              fontSize: hp(1.6),
+              fontWeight: "500", // font-medium
+              color: "#6B7280", // text-neutral-500
+            }}
+            // className="font-medium text-neutral-500"
           >
             {renderTime()}
           </Text>
         </View>
         <Text
-          style={{ fontSize: hp(1.6) }}
-          className="font-medium text-neutral-500"
+          style={{
+            fontSize: hp(1.6),
+            fontWeight: "500", // font-medium
+            color: "#6B7280", // text-neutral-500
+          }}
+          // className="font-medium text-neutral-500"
         >
           {renderLastMessage()}
         </Text>

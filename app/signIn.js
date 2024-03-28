@@ -49,71 +49,52 @@ const signIn = () => {
       <StatusBar style="dark" />
 
       {/* SignIn Image */}
-      <View
-        className="flex-1 gap-12"
-        style={{ paddingTop: hp(8), paddingHorizontal: wp(5) }}
-      >
-        <View className="items-center">
+      <View style={styles.container}>
+        <View style={styles.imagecontainer}>
           <Image
-            style={{ height: hp(25), resizeMode: "contain" }}
+            style={styles.image}
             source={require("../assets/images/login.png")}
           />
         </View>
-        <View className="gap-10">
-          <Text
-            style={{ fontSize: hp(4) }}
-            className="tracking-wider font-bold text-center text-neutral-800"
-          >
-            Sign In
-          </Text>
+        <View style={{ gap: hp(4) }}>
+          <Text style={styles.signinText}>Sign In</Text>
           {/* input fields */}
-          <View className="gap-4">
-            <View
-              style={{ height: hp(7) }}
-              className="flex-row gap-4 px-4 bg-neutral-100 items-center rounded-2xl"
-            >
+          <View style={{ gap: hp(2.5) }}>
+            <View style={styles.inputtextcontainer}>
               <Octicons name="mail" size={hp(2.7)} color="gray" />
               <TextInput
                 onChangeText={(value) => (emailRef.current = value)}
-                style={{ fontSize: hp(2) }}
-                className="flex-1 font-semibold text-neutral-700"
+                style={styles.textinput}
                 placeholder="Email address"
                 placeholderTextColor={"gray"}
               />
             </View>
 
-            <View className="gap-3">
-              <View
-                style={{ height: hp(7) }}
-                className="flex-row gap-4 px-4 bg-neutral-100 items-center rounded-2xl"
-              >
+            <View style={{ gap: 3 }}>
+              <View style={styles.inputtextcontainer}>
                 <Octicons name="lock" size={hp(2.7)} color="gray" />
                 <TextInput
                   onChangeText={(value) => (passwordRef.current = value)}
-                  style={{ fontSize: hp(2) }}
-                  className="flex-1 font-semibold text-neutral-700"
+                  style={styles.textinput}
                   placeholder="Password"
                   secureTextEntry
                   placeholderTextColor={"gray"}
                 />
               </View>
-              <Text
-                style={{ fontSize: hp(1.8) }}
-                className="font-semibold text-right text-neutral-500"
-              >
-                Forgot Password
-              </Text>
+              <Text style={styles.forgotpassword}>Forgot Password</Text>
             </View>
 
             {/* submit button */}
             <View>
               {loading ? (
-                <View className="flex-row justify-center">
+                <View
+                  style={{ flexDirection: "row", justifyContent: "center" }}
+                  //className="flex-row justify-center"
+                >
                   <Loading size={hp(8)} />
                 </View>
               ) : (
                 <TouchableOpacity
-                  //   className="bg-indigo-500 rounded-xl justify-center items-center"
                   style={{
                     height: hp(6.5),
                     backgroundColor: "#3f51f5",
@@ -124,8 +105,11 @@ const signIn = () => {
                   onPress={handleLogin}
                 >
                   <Text
-                    style={{ fontSize: hp(2.7) }}
-                    className="text-white font-bold tracking-wider"
+                    style={{
+                      fontSize: hp(2.7),
+                      fontWeight: "bold",
+                      color: "white",
+                    }}
                   >
                     Sign In
                   </Text>
@@ -135,17 +119,23 @@ const signIn = () => {
 
             {/* sign up text */}
 
-            <View className="flex-row justify-center">
+            <View style={{ flexDirection: "row", justifyContent: "center" }}>
               <Text
-                style={{ fontSize: hp(1.8) }}
-                className="font-semibold text-neutral-500"
+                style={{
+                  fontSize: hp(1.8),
+                  fontWeight: "500",
+                  color: "#888888",
+                }}
               >
                 Don't have an account?
               </Text>
               <Pressable onPress={() => router.push("signUp")}>
                 <Text
-                  style={{ fontSize: hp(1.8) }}
-                  className="font-bold text-indigo-500"
+                  style={{
+                    fontSize: hp(1.8),
+                    fontWeight: "bold",
+                    color: "#3F51B5",
+                  }}
                 >
                   Sign Up
                 </Text>
@@ -160,4 +150,44 @@ const signIn = () => {
 
 export default signIn;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    paddingTop: hp(8),
+    paddingHorizontal: wp(5),
+    flex: 1,
+    gap: 12,
+  },
+
+  imagecontainer: {
+    alignItems: "center",
+  },
+  image: { height: hp(25), resizeMode: "contain" },
+  inputtextcontainer: {
+    flexDirection: "row",
+    gap: wp(4),
+    paddingHorizontal: wp(4),
+    height: hp(7),
+    backgroundColor: "#DDDDDD",
+    alignItems: "center",
+    borderRadius: 20,
+  },
+  signinText: {
+    fontSize: hp(4),
+    fontWeight: "bold",
+    textAlign: "center",
+    color: "#222222",
+  },
+
+  textinput: {
+    fontSize: hp(2),
+    flex: 1,
+    fontWeight: "500",
+    color: "#222222",
+  },
+  forgotpassword: {
+    fontSize: hp(1.8),
+    fontWeight: "500",
+    textAlign: "right",
+    color: "#888888",
+  },
+});

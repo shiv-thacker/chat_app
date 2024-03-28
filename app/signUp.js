@@ -63,75 +63,67 @@ const signIn = () => {
 
       {/* SignIn Image */}
       <View
-        className="flex-1 gap-12"
-        style={{ paddingTop: hp(7), paddingHorizontal: wp(5) }}
+        style={{
+          paddingTop: hp(8),
+          paddingHorizontal: wp(5),
+          flex: 1,
+          gap: hp(6),
+        }}
       >
-        <View className="items-center">
+        <View style={{ alignItems: "center" }}>
           <Image
             style={{ height: hp(20), resizeMode: "contain" }}
             source={require("../assets/images/register.png")}
           />
         </View>
-        <View className="gap-10">
-          <Text
-            style={{ fontSize: hp(4) }}
-            className="tracking-wider font-bold text-center text-neutral-800"
-          >
-            Sign Up
-          </Text>
+        <View style={{ gap: hp(3) }}>
+          <Text style={styles.signinText}>Sign Up</Text>
           {/* input fields */}
-          <View className="gap-4">
+          <View style={{ gap: hp(2) }}>
             <View
-              style={{ height: hp(7) }}
-              className="flex-row gap-4 px-4 bg-neutral-100 items-center rounded-2xl"
+              style={styles.inputtextcontainer}
+              // className="flex-row gap-4 px-4 bg-neutral-100 items-center rounded-2xl"
             >
               <Feather name="user" size={hp(2.7)} color="gray" />
               <TextInput
                 onChangeText={(value) => (usernameRef.current = value)}
-                style={{ fontSize: hp(2) }}
-                className="flex-1 font-semibold text-neutral-700"
+                style={styles.textinput}
+                //className="flex-1 font-semibold text-neutral-700"
                 placeholder="Username"
                 placeholderTextColor={"gray"}
               />
             </View>
-            <View
-              style={{ height: hp(7) }}
-              className="flex-row gap-4 px-4 bg-neutral-100 items-center rounded-2xl"
-            >
+            <View style={styles.inputtextcontainer}>
               <Octicons name="mail" size={hp(2.7)} color="gray" />
               <TextInput
                 onChangeText={(value) => (emailRef.current = value)}
-                style={{ fontSize: hp(2) }}
-                className="flex-1 font-semibold text-neutral-700"
+                style={styles.textinput}
+                // className="flex-1 font-semibold text-neutral-700"
                 placeholder="Email address"
                 placeholderTextColor={"gray"}
               />
             </View>
 
             <View
-              style={{ height: hp(7) }}
-              className="flex-row gap-4 px-4 bg-neutral-100 items-center rounded-2xl"
+              style={styles.inputtextcontainer}
+              // className="flex-row gap-4 px-4 bg-neutral-100 items-center rounded-2xl"
             >
               <Octicons name="lock" size={hp(2.7)} color="gray" />
               <TextInput
                 onChangeText={(value) => (passwordRef.current = value)}
-                style={{ fontSize: hp(2) }}
-                className="flex-1 font-semibold text-neutral-700"
+                style={styles.textinput}
                 placeholder="Password"
                 secureTextEntry
                 placeholderTextColor={"gray"}
               />
             </View>
 
-            <View
-              style={{ height: hp(7) }}
-              className="flex-row gap-4 px-4 bg-neutral-100 items-center rounded-2xl"
-            >
+            <View style={styles.inputtextcontainer}>
               <Feather name="image" size={hp(2.7)} color="gray" />
               <TextInput
                 onChangeText={(value) => (profileRef.current = value)}
-                style={{ fontSize: hp(2) }}
-                className="flex-1 font-semibold text-neutral-700"
+                style={styles.textinput}
+                //className="flex-1 font-semibold text-neutral-700"
                 placeholder="Profile url"
                 placeholderTextColor={"gray"}
               />
@@ -140,7 +132,10 @@ const signIn = () => {
             {/* submit button */}
             <View>
               {loading ? (
-                <View className="flex-row justify-center">
+                <View
+                  style={{ flexDirection: "row", justifyContent: "center" }}
+                  //className="flex-row justify-center"
+                >
                   <Loading size={hp(8)} />
                 </View>
               ) : (
@@ -156,8 +151,12 @@ const signIn = () => {
                   onPress={handleRegister}
                 >
                   <Text
-                    style={{ fontSize: hp(2.7) }}
-                    className="text-white font-bold tracking-wider"
+                    style={{
+                      fontSize: hp(2.7),
+                      fontWeight: "bold",
+                      color: "white",
+                    }}
+                    //className="text-white font-bold tracking-wider"
                   >
                     Sign Up
                   </Text>
@@ -167,17 +166,23 @@ const signIn = () => {
 
             {/* sign up text */}
 
-            <View className="flex-row justify-center">
+            <View
+              style={{ flexDirection: "row", justifyContent: "center" }}
+              // className="flex-row justify-center"
+            >
               <Text
-                style={{ fontSize: hp(1.8) }}
-                className="font-semibold text-neutral-500"
+                style={styles.forgotpassword}
+                // className="font-semibold text-neutral-500"
               >
                 Already have an account?
               </Text>
               <Pressable onPress={() => router.push("signIn")}>
                 <Text
-                  style={{ fontSize: hp(1.8) }}
-                  className="font-bold text-indigo-500"
+                  style={{
+                    fontSize: hp(1.8),
+                    fontWeight: "bold",
+                    color: "#3F51B5",
+                  }}
                 >
                   Sign In
                 </Text>
@@ -192,4 +197,31 @@ const signIn = () => {
 
 export default signIn;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  signinText: {
+    fontSize: hp(4),
+    fontWeight: "bold",
+    textAlign: "center",
+    color: "#222222",
+  },
+  inputtextcontainer: {
+    flexDirection: "row",
+    gap: wp(4),
+    paddingHorizontal: wp(4),
+    height: hp(7),
+    backgroundColor: "#DDDDDD",
+    alignItems: "center",
+    borderRadius: 20,
+  },
+  textinput: {
+    fontSize: hp(2),
+    flex: 1,
+    fontWeight: "500",
+    color: "#222222",
+  },
+  forgotpassword: {
+    fontSize: hp(1.8),
+    fontWeight: "500",
+    color: "#888888",
+  },
+});

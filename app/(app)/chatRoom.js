@@ -135,26 +135,68 @@ const ChatRoom = () => {
   console.log("message", messages);
   return (
     <CustomKeyboardView inchat={true}>
-      <View className="flex-1 bg-white">
+      <View
+        style={{ flex: 1, backgroundColor: "white" }}
+        // className="flex-1 bg-white"
+      >
         <StatusBar style="dark" />
         <ChatRoomHeader user={item} router={router} />
-        <View className="h-3 border-b border-neutral-300"></View>
-        <View className="flex-1 justify-between bg-neutral-100 overflow-visible">
-          <View className="flex-1">
+        <View
+          style={{
+            height: hp(2),
+            borderBottomWidth: 1,
+            borderBottomColor: "#D1D5DB",
+          }}
+          //className="h-3 border-b border-neutral-300"
+        ></View>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "space-between",
+            backgroundColor: "#F3F4F6", // Assuming neutral-100 is equivalent to #F3F4F6
+            overflow: "visible",
+          }}
+          // className="flex-1 justify-between bg-neutral-100 overflow-visible"
+        >
+          <View
+            style={{ flex: 1 }}
+            //className="flex-1"
+          >
             <MessageList
               messages={messages}
               currentUser={user}
               scrollViewRef={scrollViewRef}
             />
           </View>
-          <View className="pt-2" style={{ marginBottom: hp(2.7) }}>
-            <View className="flex-row justify-around bg-white border p-2 border-neutral-300  rounded-full pl-5 mx-3">
+          <View
+            //className="pt-2"
+            style={{ marginBottom: hp(2.7), paddingTop: hp(2) }}
+          >
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-around",
+                backgroundColor: "white",
+                borderWidth: 1,
+                padding: hp(0.7),
+                borderColor: "#D1D5DB",
+                borderRadius: 999,
+                paddingLeft: 5,
+                marginHorizontal: wp(2),
+              }}
+              //className="flex-row justify-around bg-white border p-2 border-neutral-300  rounded-full pl-5 mx-3"
+            >
               <TextInput
                 ref={inputRef}
                 onChangeText={(value) => (textRef.current = value)}
                 placeholder="Type message..."
-                className="flex-1 mr-2"
-                style={{ fontSize: hp(2) }}
+                // className="flex-1 mr-2"
+                style={{
+                  fontSize: hp(2),
+                  flex: 1,
+                  marginRight: wp(2),
+                  marginLeft: wp(0.7),
+                }}
               />
               <TouchableOpacity
                 style={{

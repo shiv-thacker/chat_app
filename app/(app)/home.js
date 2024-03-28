@@ -43,14 +43,20 @@ const home = () => {
   };
 
   return (
-    <View className="flex-1 bg-white">
+    <View
+      style={{ flex: 1, backgroundColor: "white" }}
+      // className="flex-1 bg-white"
+    >
       {/* to make fonts while in status bar */}
       <StatusBar style="light" />
 
       {users.length > 0 ? (
         <Chatlist users={users} currentUser={user} />
       ) : (
-        <View className="flex items-center" style={{ top: hp(30) }}>
+        <View
+          // className="flex items-center"
+          style={{ top: hp(30), display: "flex", alignItems: "center" }}
+        >
           <Loading size={hp(10)} />
         </View>
       )}
